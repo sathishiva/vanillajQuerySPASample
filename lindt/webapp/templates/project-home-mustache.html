@@ -1,0 +1,90 @@
+<script type="text/html" id="project-home-template">
+    <div class="projects-list-container">
+        <p class="pull-right">
+            <button type="button" class="new-project btn btn-default btn-sm" data-toggle="modal" data-target="#newProjectModal">
+              <span class="glyphicon glyphicon-plus"></span> New Project
+            </button>
+        </p>
+        <table class="projects-list table table-bordered table-hover" cellspacing="0" width="100%">
+	</table>
+    <p class="modal-wrapper hide">test</p>
+    </div>
+    <ul class="pagination pull-right">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+</script>
+
+
+<script type="text/html" id="project-list-template">
+    <thead>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody class="project-list">
+    {{#projectList}}
+    <tr data-key="{{id}}">
+    	<td>
+    		<span>{{code}}</span>
+    	</td>
+    	<td>{{name}}</td>
+    	<td>{{description}}</td>
+    	<td>
+    		<button type="button" class="btn btn-primary btn-xs {{#active}}btn-success{{/active}}{{^active}}btn-warning{{/active}}">{{#active}}Active{{/active}}{{^active}}Inactive{{/active}}</button>
+    	</td>
+    	<td><a href="#">edit</a></td>
+    	<td><a href="javacript:void(0);" data-key="{{id}}" class="delete-project">delete</a></td>
+    </tr>
+    {{/projectList}}
+    </tbody>
+</script>
+
+
+<script type="text/html" id="project-modal-template">
+    <!-- Modal -->
+    <div class="modal fade" id="newProjectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Create Project</h4>
+          </div>
+          <div class="modal-body">
+            <form id="createProjectForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                    <label class="col-md-3 control-label">Code</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" name="code" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Name</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" name="name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Description</label>
+                    <div class="col-md-5">
+                        <textarea class="form-control" name="description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group modal-footer modal-btn-wrapper">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="createProject">Create</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</script>    
